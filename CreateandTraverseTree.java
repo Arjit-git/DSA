@@ -11,6 +11,7 @@ public class Tree {
         preOrder(root);
         System.out.println("\nPostorder Traversal : ");
         postOrder(root);
+        System.out.println("\nHeight : \n"+heightOfTree(root));
     }
 
     static Node createTree(){
@@ -54,6 +55,24 @@ public class Tree {
         postOrder(root.right);
         System.out.print(root.data+" ");
 
+    }
+    static int heightOfTree(Node root){
+        if(root == null){
+            return 0;
+        }
+       return  Math.max(heightOfTree(root.left),heightOfTree(root.right)) +1;
+    }
+    static int sizeOfTree(Node root){
+        if(root == null){
+            return 0;
+        }
+        return (sizeOfTree(root.left)+sizeOfTree(root.right)+1);
+    }
+    static int maxElementOfTree(Node root){
+        if(root == null){
+            return -1000;
+        }
+        return Math.max(root.data,Math.max(maxElementOfTree(root.left),maxElementOfTree(root.right)));
     }
 }
 class Node{
