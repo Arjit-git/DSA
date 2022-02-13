@@ -74,6 +74,22 @@ public class Tree {
         }
         return Math.max(root.data,Math.max(maxElementOfTree(root.left),maxElementOfTree(root.right)));
     }
+  public static boolean is_bst(
+      BinaryTreeNode root) {
+   
+    return is_BST_WITH_Range(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
+  }
+   static boolean is_BST_WITH_Range(BinaryTreeNode node, int min, int max){
+        if(node == null)
+            return true;
+
+        if(node.data < min || node.data >max)
+            return false;
+
+        return (is_BST_WITH_Range(node.left,min,node.data ) &&
+                is_BST_WITH_Range(node.right,node.data,max));
+    }
+
 }
 class Node{
     public int data;
